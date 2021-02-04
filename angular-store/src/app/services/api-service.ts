@@ -14,6 +14,6 @@ export class ApiService {
         firstName: 'Bob',
         lastName: 'Marley'
       };
-    }, 200);
+    }, 5000);
   }
 }

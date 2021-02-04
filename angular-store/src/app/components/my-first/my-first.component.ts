@@ -14,6 +14,7 @@ export class MyFirstComponent implements OnInit {
     public store: StoreService) { }
 
   ngOnInit(): void {
+    // simulate asynchronous function
     this.api.getData();
   }
 

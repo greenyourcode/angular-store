@@ -1,11 +1,13 @@
 <div style="border-color: red; border: 2px; border-style: solid;">
     <p>my-second-component works!</p>
     <ul>
+        <!-- elvis operator ?. to manage asynchronous variables -->
         <li>FirstName : {{store.customer?.firstName}}</li>
         <li>Name : {{store.customer?.lastName}}</li>
     </ul>
     <h3>Change store data : </h3>
     <p>
+        <!-- Two-way data-binding replace gue between store and view in redux model -->
         <input type="text" [(ngModel)]="store.customer && store.customer.lastName" />
         <button (click)="histoStore.setAction()" type="button">Add to histo</button>
         <button (click)="histoStore.getFirstHistoAction()" type="button">Get First Histo action</button>

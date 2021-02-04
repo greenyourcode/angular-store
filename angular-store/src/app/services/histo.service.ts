@@ -4,6 +4,8 @@ import { StoreService } from './store-service';
 @Injectable({
   providedIn: 'root'
 })
+
+/** To manage history like redux store */ 
 export class HistoService {
 
   constructor(private store: StoreService) { }
@@ -11,7 +13,6 @@ export class HistoService {
   histoStore: Array<any> = [];
 
   setAction() {
-    console.log(this.store)
     this.histoStore.push({
       ...this.store,
       customer: {
