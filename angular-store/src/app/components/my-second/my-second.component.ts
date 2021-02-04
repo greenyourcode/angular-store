@@ -15,5 +15,4 @@ export class MySecondComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

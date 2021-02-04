@@ -11,6 +11,7 @@ export class HistoService {
   histoStore: Array<any> = [];
 
   setAction() {
+    console.log(this.store)
     this.histoStore.push({
       ...this.store,
       customer: {
@@ -20,9 +21,7 @@ export class HistoService {
   }
 
   getFirstHistoAction() {
-    this.store = {
-      ...this.store.customer,
-      customer : this.histoStore[0]
-    };
+    console.log(this.store)
+    this.store.setState(this.histoStore[0].customer)
   }
 }

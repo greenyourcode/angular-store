@@ -1,0 +1,6 @@
+<p>Historique des stores :
+<i>Cliquer sur un store pour le recharger</i>
+</p>
+<ul *ngFor="let item of histoService.histoStore">
+    <li (click)="reLoadState(item)">{{ item.customer?.lastName }} {{ item.customer?.firstName }}</li>
+</ul>

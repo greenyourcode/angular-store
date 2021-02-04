@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { MyFirstComponent } from './components/my-first/my-first.component';
 import { MySecondComponent } from './components/my-second/my-second.component';
 import { FormsModule } from '@angular/forms';
+import { HistoComponent } from './components/histo/histo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyFirstComponent,
-    MySecondComponent
+    MySecondComponent,
+    HistoComponent
   ],
   imports: [
     BrowserModule,
