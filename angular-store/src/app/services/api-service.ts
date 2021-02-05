@@ -9,11 +9,12 @@ export class ApiService {
   constructor(private store: StoreService) { }
 
   getData() {
+    this.store.dispatch('loading', null);
     setTimeout(() => {
-      this.store.customer = {
+      this.store.dispatch('update', {
         firstName: 'Bob',
         lastName: 'Marley'
-      };
-    }, 5000);
+      });
+    }, 2000);
   }
 }

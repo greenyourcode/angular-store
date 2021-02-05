@@ -9,7 +9,6 @@
     <p>
         <!-- Two-way data-binding replace gue between store and view in redux model -->
         <input type="text" [(ngModel)]="store.customer && store.customer.lastName" />
-        <button (click)="histoStore.setAction()" type="button">Add to histo</button>
-        <button (click)="histoStore.getFirstHistoAction()" type="button">Get First Histo action</button>
+        <button (click)="histoStore.setAction(store)" type="button">Add to histo</button>
     </p>
 </div>

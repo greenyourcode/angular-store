@@ -7,6 +7,7 @@ import { MyFirstComponent } from './components/my-first/my-first.component';
 import { MySecondComponent } from './components/my-second/my-second.component';
 import { FormsModule } from '@angular/forms';
 import { HistoComponent } from './components/histo/histo.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HistoComponent } from './components/histo/histo.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,28 +1,26 @@
 import { Injectable } from '@angular/core';
-import { StoreService } from './store-service';
 
 @Injectable({
   providedIn: 'root'
 })
 
-/** To manage history like redux store */ 
+/** To manage history like redux store */
 export class HistoService {
 
-  constructor(private store: StoreService) { }
+  constructor() { }
 
   histoStore: Array<any> = [];
 
-  setAction() {
+  setAction(store) {
     this.histoStore.push({
-      ...this.store,
-      customer: {
-        ...this.store.customer,
-      }
+      ...store
     });
+    this.getHisto();
   }
 
-  getFirstHistoAction() {
-    console.log(this.store)
-    this.store.setState(this.histoStore[0].customer)
+  getHisto() {
+    for (const iterator of this.histoStore) {
+      console.log(iterator);
+    }
   }
 }

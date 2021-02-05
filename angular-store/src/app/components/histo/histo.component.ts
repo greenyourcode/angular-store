@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class HistoComponent implements OnInit {
 
   constructor(
-    public histoService: HistoService, 
+    public histoService: HistoService,
     private storeService: StoreService) { }
 
   ngOnInit(): void {
