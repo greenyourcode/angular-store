@@ -1,22 +1,19 @@
 import { HistoService } from 'src/app/services/histo.service';
 import { StoreService } from 'src/app/services/store-service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-histo',
   templateUrl: './histo.component.html',
   styleUrls: ['./histo.component.scss']
 })
-export class HistoComponent implements OnInit {
+export class HistoComponent {
 
   constructor(
     public histoService: HistoService,
     private storeService: StoreService) { }
 
-  ngOnInit(): void {
-  }
-
   reLoadState(state) {
-    this.storeService.setState(state.customer);
+    this.storeService.setState(state);
   }
 }

@@ -1,5 +1,5 @@
 <div style="border-color: red; border: 2px; border-style: solid;">
-    <p>my-second-component works!</p>
+    <p>COMPOSANT 2</p>
     <ul>
         <!-- elvis operator ?. to manage asynchronous variables -->
         <li>FirstName : {{store.customer?.firstName}}</li>
@@ -9,6 +9,6 @@
     <p>
         <!-- Two-way data-binding replace gue between store and view in redux model -->
         <input type="text" [(ngModel)]="store.customer && store.customer.lastName" />
-        <button (click)="histoStore.setAction(store)" type="button">Add to histo</button>
+        <button (click)="saveOnHistory()" type="button">Add to histo</button>
     </p>
 </div>

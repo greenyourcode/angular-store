@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StoreType } from 'src/app/services/store.enum';
 import { HistoService } from 'src/app/services/histo.service';
 import { StoreService } from 'src/app/services/store-service';
 
@@ -7,12 +8,12 @@ import { StoreService } from 'src/app/services/store-service';
   templateUrl: './my-second.component.html',
   styleUrls: ['./my-second.component.scss']
 })
-export class MySecondComponent implements OnInit {
+export class MySecondComponent {
 
   constructor(
-    public store: StoreService,
-    public histoStore: HistoService) { }
+    public store: StoreService) { }
 
-  ngOnInit(): void {
+  saveOnHistory() {
+    this.store.dispatch(StoreType.Updated, this.store?.customer);
   }
 }
