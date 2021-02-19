@@ -2,37 +2,31 @@ import { ApiService } from 'src/app/services/api-service';
 import { Injectable } from '@angular/core';
 import { StoreAction } from './store.enum';
 import { HistoService } from './histo.service';
-import { Observable, of, Subject } from 'rxjs';
-import { filter, tap, map, switchMap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StoreService {
-  action: any; // extract in enum action
   action$ = new Subject();
-  state$ = new Subject();
   customer: any = {};
   initialState = []
 
   constructor(
     private histoService: HistoService,
     private apiService: ApiService) { 
+      // epic redux
       this.action$.pipe(
-        filter((action: any) => action.type === 'UPDATING'),
+        filter((action: any) => action.type === StoreAction.Updating),
         switchMap(_ => this.apiService.getUserXhr()),
-        map((data: any) => {
-          return { type: 'UPDATED', payload: { lastName: data.name } };
-        }),
-        // switchMap((action: any) => this.dispatch(action, action.payload))
-      ).subscribe(
-      //   (res) => {
-      //   console.log(res)
-      // });
-        (action: any) => {
-        this.dispatch(action, action.payload)
-      }
-      );
+        tap((user: any) => {
+          this.dispatch({ 
+            type: StoreAction.Updated, 
+            payload: { lastName: user.name } 
+          }) 
+        })
+      ).subscribe();
     }
 
   setState(newState) {
@@ -44,39 +38,19 @@ export class StoreService {
     }
   }
 
-  setAction(action) {
-    this.action = action;
-    this.action$.next(action);
-  }
-
-  dispatch(action, payload) {
-    const newState = this.reducer(this.customer, { action, payload });
+  dispatch(action) {
+    const newState = this.reducer(this.customer, action);
     this.setState(newState);
-    this.setAction(action);
     // save each dispatch on history[]
     this.histoService.setToHistory(
       action,
       newState
     );
-
-    // return of(1).pipe(
-    //   map(_ => {
-    //     return this.reducer(this.customer, { action, payload })
-    //   }),
-    //   tap((newState) => {
-    //     this.setState(newState);
-    //     this.setAction(action);
-    //     // save each dispatch on history[]
-    //     this.histoService.setToHistory(
-    //       action,
-    //       newState
-    //     );
-    //   }));
-    
+    this.action$.next(action);
   }
 
-  reducer(state = this.initialState, { action, payload }) {
-    switch (action.type) {
+  reducer(state = this.initialState, { type, payload }) {
+    switch (type) {
       case StoreAction.Loading:
         return {
           ...state,

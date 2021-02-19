@@ -10,7 +10,6 @@ import { StoreService } from 'src/app/services/store-service';
 export class MyFirstComponent implements OnInit {
 
   constructor(
-    private api: ApiService,
     public store: StoreService) { }
 
   ngOnInit(): void {

@@ -14,6 +14,9 @@ export class MySecondComponent {
     public store: StoreService) { }
 
   saveOnHistory() {
-    this.store.dispatch({type: StoreAction.Updating}, this.store?.customer);
+    this.store.dispatch({
+      type: StoreAction.Updating, 
+      payload: this.store?.customer
+    });
   }
 }
