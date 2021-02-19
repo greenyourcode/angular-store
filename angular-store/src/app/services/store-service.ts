@@ -23,7 +23,7 @@ export class StoreService {
         tap((user: any) => {
           this.dispatch({ 
             type: StoreAction.Updated, 
-            payload: { lastName: user.name } 
+            payload: { lastName: user.name, firstName: user.nickName } 
           }) 
         })
       ).subscribe();
