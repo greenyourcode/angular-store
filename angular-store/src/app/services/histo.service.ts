@@ -7,9 +7,9 @@ import { Injectable } from '@angular/core';
 export class HistoService {
   histoStore: Array<any> = [];
 
-  setToHistory(type, store) {
+  setToHistory(action, store) {
     this.histoStore.push({
-      type,
+      action,
       store
     });
   }

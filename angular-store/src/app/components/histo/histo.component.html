@@ -3,7 +3,7 @@
 </p>
 <ul *ngFor="let item of histoService.histoStore">
     <li (click)="reLoadState(item.store)">
-        {{ item.type | uppercase }} - 
+        {{ item.action.type | uppercase }} - 
         {{ item.store?.lastName }} {{ item.store?.firstName }} -
         {{ item.store?.isLoading ? 'en cours de chargement' : 'chargé' }}
     </li>

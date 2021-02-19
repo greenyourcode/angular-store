@@ -1,22 +1,16 @@
 import { Injectable } from '@angular/core';
-import { StoreType } from './store.enum';
-import { StoreService } from './store-service';
-
+import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private store: StoreService) { }
+  constructor() { }
 
-  getData() {
-    this.store.dispatch(StoreType.Loading, null);
-    setTimeout(() => {
-      this.store.dispatch(StoreType.Updated, {
-        loading: false,
-        firstName: 'Bob',
-        lastName: 'Marley'
-      });
-    }, 2000);
+  getUserXhr(): Observable<any> {
+    return of({
+      name: 'Loko',
+      nickName: 'Patrice'
+    })
   }
 }

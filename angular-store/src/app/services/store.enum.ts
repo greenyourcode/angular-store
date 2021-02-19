@@ -1,4 +1,5 @@
-export enum StoreType {
+export enum StoreAction {
     Loading = 'LOADING',
+    Updating = 'UPDATING',
     Updated = 'UPDATED'
 }

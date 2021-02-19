@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StoreType } from 'src/app/services/store.enum';
+import { StoreAction } from 'src/app/services/store.enum';
 import { HistoService } from 'src/app/services/histo.service';
 import { StoreService } from 'src/app/services/store-service';
 
@@ -14,6 +14,6 @@ export class MySecondComponent {
     public store: StoreService) { }
 
   saveOnHistory() {
-    this.store.dispatch(StoreType.Updated, this.store?.customer);
+    this.store.dispatch({type: StoreAction.Updating}, this.store?.customer);
   }
 }
